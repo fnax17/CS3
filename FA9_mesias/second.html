@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		* {
+				text-align: center;
+				padding: 10px;
+			}
+	</style>
+	<title>Second Page</title>
+	<script>
+		function replaceImage() {
+			document.getElementById("myImage").src = "new_image.jpg";
+		}
+		function revertImage() {
+			document.getElementById("myImage").src = "original_image.jpg";
+		}
+	</script>
+</head>
+<body>
+	<button onclick="replaceImage()"> Dog(Replace Image) </button>
+	<button onclick="revertImage()"> Cat(Revert Image)</button>
+	<br>
+	<img id="myImage" src="original_image.jpg">
+</body>
+</html>
