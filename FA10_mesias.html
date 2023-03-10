@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Felinwright Ninokyle A. Mesias">
+</head>
+<body>
+	<script>
+		var x = Math.floor(Math.random()*1001);
+		var name = x.toString();
+		var y = name.length;
+		var a = name[0];
+		var b = name[1];
+		var c = name[2];
+		var d = name[4];
+
+		switch (y) {
+		case 4: 
+			a = 0;
+			b = 0;
+			c = 0;
+			document.write( "Randomly Generated Number: " + x + "<br>" + "Breakdown: " + a + ", " + b + ", " + c);
+			break;
+		case 3:
+			a *= 100;
+			b *= 10;
+			c *= 1;
+			document.write( "Randomly Generated Number: " + x + "<br>" + "Breakdown: " + a + ", " + b + ", " + c);
+			break;		
+		case 2:
+			a *= 10;
+			b *= 1;
+			c = 0;
+			document.write( "Randomly Generated Number: " + x + "<br>" + "Breakdown: " + c + ", " + a + ", " + b);
+			break;
+		case 1:	
+			a *= 1;
+			b = 0;
+			c = 0;
+			document.write( "Randomly Generated Number: " + x + "<br>" + "Breakdown: " + b + ", " + c + ", " + a);
+			break;
+		}
+		
+	</script>
+</body>
+</html>
