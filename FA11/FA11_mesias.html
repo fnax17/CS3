@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="author" content="Felinwright Ninokyle A. Mesias">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Formative Assessment 11 </title>
+	</head>
+	<body>
+	
+		<script>
+
+			var a = prompt("Enter the length for the first segment(a): ");
+			var b = prompt("Enter the length for the second segment(b): ");
+			var c = prompt("Enter the length for the third segment(c): ");
+
+			determineTriangle(a,b,c);
+
+			function determineTriangle(a,b,c) {
+			
+				if(a==b && b==c && c==a) {
+					alert("The triangle is EQUILATERAL.");
+
+				} else if((a==b) || (b==c) || (c==a)) {
+					alert("The triangle is ISOSCELES.");
+
+				} else {
+					alert("The triangle is SCALENE.");
+
+				}
+			}
+		</script>
+	</body>
+</html>
