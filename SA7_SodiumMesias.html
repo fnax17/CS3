@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Numerology</title>
+	<meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Felinwright Ninokyle A. Mesias">
+      <style>
+      	body {background: lightblue; 
+            text-align: center;
+            font-family: arial;
+            color: navy;
+            }
+            button {padding: 10px; background:violet }
+            span {font-size: 0.5em; color: maroon}
+     	</style>
+</head>
+<body>
+	<h1> Your Fortune is in your name </h1>
+	<h2> Your Name is: <span id="thename"> </span></h2>
+    	<h2> Today's fortune: <span id="fortune"> </span></h2>
+    
+    	<button onclick = "myFunction()"> Click here to put your name </button>    
+     	<script>
+		function myFunction() { //this function will let the user input his name
+			var x = prompt("Please enter your name"); 
+			document.getElementById("thename").innerHTML = x; //this assigns the value of x to the id="thename"
+			var y = x.length; //equates y to the number of characters of the input, including spaces and other special characters
+			while(y > 9) {
+				y = (y-(y%10))/10 + (y%10); // this gives the remainder of the length of the digits
+			}
+		
+			switch(y) { 
+				case 0:
+					document.getElementById("fortune").innerHTML = "Hiraeth. A homesickness for a home to which you cannot return, a home which maybe never was; the nostalgia, the yearning, the grief for the lost places of your past.";   // This statement will show up when their is no name indicated or default
+					break;
+				case 1:
+					document.getElementById("fortune").innerHTML = "Ikigai. The passion that gives value and joy to life. The reason for being.";  // This statement will show up when the results of adding the digits repeatedly until there is only one single digit left, which is 1
+					break;
+				case 2:
+					document.getElementById("fortune").innerHTML = "Kaizen. Always be productive. Improve each day, no matter how little. This leads to fulfillment and success. ";    // This statement will show up when the results of adding the digits repeatedly until there is only one single digit left, which is 2
+					break;
+				//The same process happens to the other cases
+				case 3:
+					document.getElementById("fortune").innerHTML = "When you are not fed love on a silver spoon, you learn to lick it off knives";   
+					break;
+				case 4:
+					document.getElementById("fortune").innerHTML = "Carpe Diem. Seize the moment.";  
+					break;
+				case 5:
+					document.getElementById("fortune").innerHTML = "Memento Mori: Memento Vivere. Remember that you must die, so remember to live";  
+					break;
+				case 6:
+					document.getElementById("fortune").innerHTML = "Marahuyo. To be enchanted.";  
+					break;
+				case 7:
+					document.getElementById("fortune").innerHTML = "All roads lead to Rome. All choices, methods, or actions eventually lead to the same result.";  
+					break;
+				case 8:
+					document.getElementById("fortune").innerHTML = "A big fish in a small pond. It means that a person is seen as important and influential only within a small population or group";
+					break;
+				case 9:
+					document.getElementById("fortune").innerHTML = "You write your own destiny. You are the master of your fate, you are the captain of your soul.";  
+					break;
+		
+				}
+			}
+    
+    </script>
+    
+</body>
+</html>

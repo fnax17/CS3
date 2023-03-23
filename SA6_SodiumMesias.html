@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        	<meta charset="UTF-8">
+        	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Felinwright Ninokyle A. Mesias">
+		<title> One Time Password </title>
+       	<style>
+        		body {background: lightblue; 
+            		text-align: center;
+            		font-family: arial;
+               		color: navy;
+            	}
+            	button {padding: 10px; background:violet }
+            	a {font-size: 0.5em; color: maroon}
+        	</style>
+    	</head>
+    	<body onload="createOTP()">
+        	<h1> Final Verification Step </h1>
+        	<h2> Current OTP: <span id="otp"> _ _ _ _ _ _ </span> <a href="#" onclick="createOTP()"> New OTP </a></h2>
+        	<button onclick="enterOTP()"> Enter the OTP as shown above </button>
+        	<script>
+            	function createOTP() { //this function will create a random otp
+             		var digits = "0123456789"; //this is a string where the array will get its value
+             	   	var otp = '';
+             	   	for (var i = 0; i < 6; i++) {
+                    	otp += digits[Math.floor(Math.random() * 10)]; 
+				/*This will occur for 6 times. It will choose its value from the string digits. The Math.floor and Math.random is responsible for randomly getting the array that is going to be used for the otp. Then it will concatenate all the values. For example, you got the number 1 from the Math.floor and Math.random. Then you will have the value of digits[1] which is equal to 1 in the string.*/
+                		}
+                		document.getElementById('otp').textContent = otp; //assigns the string otp to the id="otp"
+            	}
+            
+            	function enterOTP() { //this function will let the user input the otp
+                		var enteredOTP = prompt('Please enter the OTP:');
+                		var currentOTP = document.getElementById('otp').textContent;
+                		if (enteredOTP === currentOTP) { 
+                    		window.open('https://fnax17.github.io/CS3/websit/aboutthewebsite.html'); //if the entered otp is correct, this will execute
+                		} else {
+                    		alert('Incorrect OTP. Please try again.'); //if the entered otp is wrong, this will execute
+                    		createOTP();
+                		}
+            	}
+        	</script>
+	</body>
+</html>

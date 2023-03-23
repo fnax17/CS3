@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> My Online Shop</title>
+    		<meta charset="UTF-8">
+      	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Felinwright Ninokyle A. Mesias">
+		<style>
+      		span {color: blue; text-decoration:underline}
+      		button {width: 100px; padding: 5px; background: pink;}
+		</style>
+	</head>
+<body>
+	<h1> Welcome to Fel's Black Market </h1>
+	<h2> Please select from the following items </h2>
+	<ol>
+		<li> King's Appendix Limited Edition: $572.00 </li>
+		<li> Quinn's Right Arm Special: $250.00 </li>
+		<li> Ralph's Growth Hormones (now in demand): $50.00 </li>
+	</ol>
+    	<p> Item selected : <span id="item"> </span> </p>
+	<p> Qty bought : <span id="qty"> </span> </p>
+	<p> Amount to pay for the item: <span id="bill"> </span> </p>
+	<p> Current Total Bill is <span id="tbill"> </span> </p>
+	
+	<button onclick="buyItem()"> Buy an Item </button>
+	<button onclick="clearItem()"> Clear </button>
+	<script>
+		currentTotalBill = 0; //the currentTotalBill is equal to 0 because the user did not buy any items yet. this is also used for initialization
+		function buyItem(){ //function for getting the item selected, qty bought, amount to pay for the item, and the Current Total Bill
+			let a = prompt("Enter item number: "); //gets the item number the user wants to buy
+		
+			if(a==1 || a==2 || a==3){ //checks if the item number is 1, 2 or 3. it will execute the process below if the condition is true
+
+				let b = prompt("Enter the quantity, or number of items, you want to buy: "); //asks the user for the qty the user will buy
+				let c = Math.round(b); //rounds the number
+
+				if(b!=c){ //checks if the qty that is inputted is an integer. if the number is not equal to the rounded number, then it is not an integer.
+					alert("Invalid quantity entered. Quantity must be an integer.");
+					return;
+				}
+				
+				if(a == 1) { //the user bought item number 1
+					let bill = 572 * b; //multiplies the price to the qty bought
+					currentTotalBill += bill; //the bills added will be equal to the total bill
+					let f = currentTotalBill; //amount the user must pay
+				
+					document.getElementById("item").innerHTML = "King's Appendix Limited Edition"; //assigns the string to the id "item"
+					document.getElementById("qty").innerHTML = b; //assigns the qty bought to the id "qty"
+					document.getElementById("bill").innerHTML = bill.toFixed(2); //converts the number to a string, it also rounds the string to 2 decimals
+					document.getElementById("tbill").innerHTML = f.toFixed(2);
+				}
+				//the same process will also happen in a==2 and a==3.
+				if(a == 2) { 
+					let bill = 250 * b;
+					currentTotalBill += bill;
+					let f = currentTotalBill;
+				
+					document.getElementById("item").innerHTML = "Quinn's Right Arm Special";
+					document.getElementById("qty").innerHTML = b;				
+					document.getElementById("bill").innerHTML = bill.toFixed(2);
+					document.getElementById("tbill").innerHTML = f.toFixed(2);
+				}
+				if(a == 3) {
+					let bill = 50 * b;
+					currentTotalBill += bill;
+					let f = currentTotalBill;
+				
+					document.getElementById("item").innerHTML = "Ralph's Growth Hormones";
+					document.getElementById("qty").innerHTML = b;				
+					document.getElementById("bill").innerHTML = bill.toFixed(2);
+					document.getElementById("tbill").innerHTML = f.toFixed(2);
+				}	
+			} else{ // if the item number is not 1, 2 or 3, or if it is false, this executes
+				alert("Invalid item number. There are only 3 items.");
+				return;
+			}
+		}
+			
+		function clearItem() { //function for clearing the values of the variables
+			currentTotalBill = 0;
+			document.getElementById("item").innerHTML = " ";
+            	document.getElementById("qty").innerHTML = " ";
+            	document.getElementById("bill").innerHTML = " ";
+            	document.getElementById("tbill").innerHTML = " ";
+        	}
+	</script>
+</body>
+</html>
