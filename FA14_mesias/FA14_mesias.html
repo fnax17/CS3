@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Learning Website Sign-up Sheet</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Felinwright Ninokyle A. Mesias">
+	
+		<style>
+      		body {
+				background-color: f2f2f2;
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+
+				background-image: url("images/background.png");
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-attachment: fixed;
+	
+			}
+
+			h1 {
+				color: #444;
+				font-size: 36px;
+				margin-bottom: 20px;
+				text-align: center;
+				text-shadow: 2px 2px #ccc;
+				background-color: white;
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				margin: 50px auto;
+					max-width: 600px;
+				padding: 20px;
+			}
+	
+			form {
+				background-color: #fff;
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+					margin: 50px auto;
+				max-width: 600px;
+				padding: 20px;
+			}
+
+			fieldset {
+				border: none;
+				margin: 0;
+				padding: 0;
+			}	
+
+			label {
+				color: #444;
+				display: block;
+					font-size: 18px;
+				margin-bottom: 5px;
+			}
+
+			input[type="text"],
+			input[type="password"],
+			input[type="email"],
+			select,
+			textarea {
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				box-sizing: border-box;
+				font-size: 16px;
+				margin-bottom: 10px;
+				padding: 10px;
+				width: 100%;
+			}
+
+			input[type="text"]:focus,
+     			input[type="email"]:focus,
+     			select:focus {
+     				outline: none;
+     				border-color: orange;
+				background-color: #EBEBEB;
+				transform: scale(1.02,1.02);
+				transition: all 1s;
+     			}
+
+			input[type="submit"],
+			input[type="reset"] {
+				background-color: #4CAF50;
+				border: none;
+				border-radius: 5px;
+				color: #fff;
+				cursor: pointer;
+				font-size: 16px;
+				margin-top: 20px;
+				padding: 10px 20px;
+				transition: background-color 0.2s;
+			}
+			input[type="submit"]:hover,
+			input[type="reset"]:hover {
+				background-color: #3e8e41;
+			}
+			.output {
+				background-color: #fff;
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				margin: 50px auto;
+				max-width: 600px;
+				padding: 20px;
+				text-align: center;
+			}
+			.output {
+				background-color: #fff;
+				border-radius: 10px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				margin: 50px auto;
+				max-width: 600px;
+				padding: 20px;
+				text-align: center;
+			}
+			.output h2 {
+				color: #444;
+				font-size: 24px;
+				margin-bottom: 20px;
+				text-shadow: 2px 2px #ccc;
+				}
+			.output p {
+				color: black;
+				font-size: 18px;
+				margin-bottom: 10px;
+				font-family: Verdana;
+			}
+			.error {
+				border-color: red !important;
+			}
+			.success {
+				border-color: green !important;
+			}
+	    	</style>
+
+  	</head>
+  	<body>
+    		<h1>Learning Website Sign-up Sheet</h1>
+    		<form>
+      		<fieldset>
+        		<legend>Personal Information</legend> 
+        		<label for="name">Name:</label>
+        		<input type="text" id="name" name="name" required onblur="validateInput(this)" onfocus="clearError(this)">
+        		<label for="username">Username:</label>
+        		<input type="text" id="username" name="username" required onblur="validateInput(this)" onfocus="clearError(this)">
+        		<label for="gender">Gender:</label>
+        		<select id="gender" name="gender" onblur="validateInput(this)" onfocus="clearError(this)" required>
+					<option value="">-- Please select --</option>
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="prefer-not-to-mention">Prefer not to mention</option>
+			</select>
+        		<label for="password">Password</span></label>
+			<input type="password" id="password" name="password" required onblur="validateInput(this)" onfocus="clearError(this)">
+        		<label for="email">Email address:</label>
+        		<input type="email" id="email" name="email" required onblur="validateInput(this)" onfocus="clearError(this)">
+     			<label for="address">Address:</label>
+    			<textarea id="address" name="address" required onblur="validateInput(this)" onfocus="clearError(this)"></textarea>
+    			<label for="interest">Interests:</label>
+    			<textarea id="interest" name="interest" required onblur="validateInput(this)" onfocus="clearError(this)"></textarea>
+  			</fieldset>
+  			<input type="submit" value="Submit">
+			<input type="reset" value="Reset" onclick="resetForm()">
+		</form>
+
+		<div class="output" id="output"></div>
+
+		<script>
+  			function validateInput(element) {
+    				if (element.value === "") {
+      				element.classList.add("error");
+    				} else {
+      				element.classList.remove("error");
+      				element.classList.add("success");
+    				}
+  			}
+  			function clearError(element) {
+    				element.classList.remove("error");
+  			}
+
+  			const form = document.querySelector("form");
+  			form.addEventListener("submit", function (event) {
+    			event.preventDefault();
+    			const output = document.querySelector("#output");
+    			const name = document.querySelector("#name").value;
+    			const username = document.querySelector("#username").value;
+    			const gender = document.querySelector("#gender").value;
+    			const password = document.querySelector("#password").value;
+    			const email = document.querySelector("#email").value;
+    			const address = document.querySelector("#address").value;
+    			const interest = document.querySelector("#interest").value;
+    			const message = ` <h2> Thank you for signing up!</h2> 
+			<p> Name: ${name} </p> 
+			<p> Username: ${username} </p> 
+			<p> Gender: ${gender} </p>  
+			<p> Password: ${password} </p> 
+			<p> Email: ${email} </p> 
+			<p> Address: ${address} </p>
+			<p> Interests: ${interest} </p>`;
+    			output.innerHTML = message;
+    			form.reset();
+  			});
+		
+			function resetForm() {
+				document.getElementById("name").value = "";
+				document.getElementById("username").value = "";
+				document.getElementById("gender").value = "";
+				document.getElementById("password").value = "";
+				document.getElementById("email").value = "";
+				document.getElementById("address").value = "";
+				document.getElementById("interest").value = "";
+				document.getElementById("output").innerHTML = "";
+			}
+		</script>
+	</body>
+</html>       
